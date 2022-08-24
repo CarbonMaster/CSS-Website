@@ -4,12 +4,10 @@ import { MenuList, HamburgerMenuIcon } from '../../components';
 
 const Menu = styled.ul`
     display: block;
-    background-color: rgb(156, 168, 212);
+    background-color: rgba(156, 168, 212, 0.2);
     padding: 0px 30px;
     border-bottom: 3px solid #cde700;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
-
-    //z-index: 1;
 `;
 
 const Button = styled.input`

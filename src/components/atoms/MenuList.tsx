@@ -11,7 +11,7 @@ const List = styled.ul`
     height: 50vh;
     list-style-type: none;
     padding: 0;
-
+    overflow: hidden;
     .a {
         display: block;
         padding: 10px;
