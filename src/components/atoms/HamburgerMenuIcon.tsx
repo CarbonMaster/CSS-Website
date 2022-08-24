@@ -1,12 +1,17 @@
-import styled from "@emotion/styled";
-import React, { useRef, useState } from "react";
+import styled from '@emotion/styled';
+import React, { useRef, useState } from 'react';
 
 const Container = styled.label`
-  margin: 20px 0;
-  z-index: 0;
-  height: 100vh;
+    margin: 20px 0;
+    z-index: 0;
 `;
 
 export const HamburgerMenuIcon = () => {
-  return <Container></Container>;
+    return (
+        <Container>
+            <span></span>
+            <span></span>
+            <span></span>
+        </Container>
+    );
 };
