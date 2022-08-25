@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
-import { MenuList } from '..';
+import { MenuList, LoginButton } from '..';
 
 const Menu = styled.ul`
     //background-color: rgba(156, 168, 212, 0.2);
@@ -133,6 +133,7 @@ export const MenuMobile = () => {
             <MenuLabel onClick={imageClick}>
                 <MenuLabelImage />
             </MenuLabel>
+            <LoginButton />
             <MenuContent className={isChecked ? 'enabledMenu' : ''} isChecked={isChecked}>
                 <MenuList />
             </MenuContent>
