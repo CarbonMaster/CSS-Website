@@ -18,9 +18,9 @@ export const MenuList = () => {
     return (
         <List>
             <br />
-            <MenuOption>a</MenuOption>
-            <MenuOption>a</MenuOption>
-            <MenuOption>a</MenuOption>
+            <MenuOption>Option</MenuOption>
+            <MenuOption>Option</MenuOption>
+            <MenuOption>Option</MenuOption>
         </List>
     );
 };

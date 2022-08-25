@@ -1,14 +1,12 @@
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
-import { MenuList, HamburgerMenuImage } from '../../components';
+import { MenuList, HamburgerMenuImage, NavBar } from '../../components';
 
 const Menu = styled.ul`
-    display: block;
     background-color: rgba(156, 168, 212, 0.2);
     padding: 30px;
-    //overflow: hidden;
-    //border-bottom: 3px solid #cde700;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+    //display: inline-block;
 `;
 
 const Button = styled.input`
@@ -68,15 +66,13 @@ const Button = styled.input`
         transition: all 0.2s;
     }
 
-    :checked ~ .MenuContent {
+    /* :checked ~ .MenuLabel {
         max-height: 100%;
+        transition: all 1s;
     }
 
     :checked ~ .MenuLabel {
-        background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(23, 22, 23, 0.8)),
-            url('./img/konon.png') no-repeat center center;
-        background-color: red !important;
-    }
+    } */
 `;
 
 const MenuLabel = styled.label`
@@ -101,8 +97,10 @@ const MenuLabelImage = styled.svg`
     background-size: 60%;
 `;
 
-const MenuHidden = styled.div`
-    overflow: hidden;
+const MenuUpperPart = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `;
 
 export const Login = () => {
@@ -111,13 +109,18 @@ export const Login = () => {
     const image = useRef(null);
 
     const MenuContent = styled.div<{ isChecked: boolean }>`
-        //padding: 0 0 0 50px;
+        padding: 0 0 0 50px;
         //max-height: 0;
-        //z-index: 2;
+        z-index: 2;
 
         overflow: hidden;
-        height: ${isChecked ? '100%' : '0px'};
+        max-height: ${isChecked ? '100%' : '0px'};
         transition: all 1s;
+
+        ::${isChecked ? 'after' : 'content'} {
+            max-height: ${isChecked ? '100%' : '0px'};
+            transition: all 1s;
+        }
     `;
 
     const imageClick = () => {
@@ -129,10 +132,13 @@ export const Login = () => {
 
     return (
         <Menu>
-            <Button type={'checkbox'} onChange={() => console.log('Active')} ref={ref} />
-            <MenuLabel onClick={imageClick}>
-                <MenuLabelImage />
-            </MenuLabel>
+            <MenuUpperPart>
+                <Button type={'checkbox'} onChange={() => console.log('Active')} ref={ref} />
+                <MenuLabel onClick={imageClick}>
+                    <MenuLabelImage />
+                </MenuLabel>
+                <NavBar />
+            </MenuUpperPart>
             <MenuContent isChecked={false}>{isChecked ? <MenuList /> : <MenuList />}</MenuContent>
         </Menu>
     );

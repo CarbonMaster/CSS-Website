@@ -3,6 +3,8 @@ import { Login } from '../../components';
 
 const All = styled.div`
     background-color: white;
+    //display: inline-flex;
+    //flex-direction: row;
 `;
 
 const Borders = styled.div`
@@ -11,9 +13,11 @@ const Borders = styled.div`
 
 const Container = styled.div`
     display: flex;
+    //display: inline-block;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    //width:100%
 
     background-image: linear-gradient(to right bottom, rgba(109, 37, 37, 0.8), rgba(76, 0, 200, 0.8)),
         url(./img/virus.jpg);
@@ -23,9 +27,6 @@ const Container = styled.div`
     background-position: top;
 
     clip-path: polygon(0 0, 100% 0, 90% 90%, 20% 100%, 0 100%);
-
-    @media (max-width: 700px) {
-    }
 `;
 
 const TitleConstainer = styled.div`
