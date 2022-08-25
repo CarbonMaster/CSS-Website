@@ -1,10 +1,7 @@
 import styled from '@emotion/styled';
-import { Login } from '../../components';
 
 const All = styled.div`
     background-color: white;
-    //display: inline-flex;
-    //flex-direction: row;
 `;
 
 const Borders = styled.div`
@@ -13,11 +10,9 @@ const Borders = styled.div`
 
 const Container = styled.div`
     display: flex;
-    //display: inline-block;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    //width:100%
 
     background-image: linear-gradient(to right bottom, rgba(109, 37, 37, 0.8), rgba(76, 0, 200, 0.8)),
         url(./img/virus.jpg);
@@ -98,17 +93,15 @@ const SubTitle = styled(Title)`
     }
 `;
 
-const Konon = styled.div`
+const ImageContainer = styled.div`
     position: relative;
     top: -25vh;
-    //left: 50vw;
-    //transform: translateX(-50%);
 `;
 
-const KononImg = styled.img`
+const XImage = styled.img`
     height: 10vh;
     backface-visibility: hidden;
-    content: url(./img/konon.png);
+    content: url(./svg/x.svg);
 
     animation: circle 1s ease-in-out;
 
@@ -230,7 +223,6 @@ const Bitch = styled.div`
 export const MainSection: React.FC = () => {
     return (
         <All>
-            <Login />
             <Container>
                 <TitleConstainer>
                     <Title>Lorem ipsum</Title>
@@ -238,9 +230,9 @@ export const MainSection: React.FC = () => {
                     <KononButton>Click</KononButton>
                     <Bitch>lololool</Bitch>
                 </TitleConstainer>
-                <Konon>
-                    <KononImg />
-                </Konon>
+                <ImageContainer>
+                    <XImage />
+                </ImageContainer>
             </Container>
         </All>
     );

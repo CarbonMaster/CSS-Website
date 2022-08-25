@@ -1,12 +1,15 @@
 import styled from '@emotion/styled';
-import { MainSection, Login } from '../components';
+import { MainSection, MenuDesktop, Wrapper } from '../components';
 
 const All = styled.div``;
 
 export const Index: React.FC = () => {
     return (
         <All>
-            <MainSection />
+            <Wrapper>
+                <MainSection />
+                <MainSection />
+            </Wrapper>
         </All>
     );
 };

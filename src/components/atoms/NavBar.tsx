@@ -16,7 +16,6 @@ const List = styled.ul`
 export const NavBar = () => {
     return (
         <List>
-            <br />
             <MenuOption>Lorum</MenuOption>
             <MenuOption>Lorum</MenuOption>
             <MenuOption>Lorum</MenuOption>

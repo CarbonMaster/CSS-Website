@@ -1,12 +1,18 @@
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
-import { MenuList, HamburgerMenuImage, NavBar } from '../../components';
+import { MenuList, HamburgerMenuImage, NavBar } from '..';
 
 const Menu = styled.ul`
     background-color: rgba(156, 168, 212, 0.2);
     padding: 30px;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
     //display: inline-block;
+    //position: fixed;
+    //z-index: 1;
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
 `;
 
 const Button = styled.input`
@@ -103,7 +109,7 @@ const MenuUpperPart = styled.div`
     justify-content: space-between;
 `;
 
-export const Login = () => {
+export const MenuDesktop = () => {
     const ref = useRef<HTMLInputElement>(null);
     const [isChecked, setIsChecked] = useState(false);
     const image = useRef(null);
@@ -117,29 +123,25 @@ export const Login = () => {
         max-height: ${isChecked ? '100%' : '0px'};
         transition: all 1s;
 
-        ::${isChecked ? 'after' : 'content'} {
+        /* ::${isChecked ? 'after' : 'content'} {
             max-height: ${isChecked ? '100%' : '0px'};
             transition: all 1s;
-        }
+        } */
     `;
 
     const imageClick = () => {
         const checkbox = ref.current;
         console.log(checkbox);
-        checkbox?.click();
+        //checkbox?.click();
         setIsChecked((prev) => !prev);
     };
 
     return (
         <Menu>
             <MenuUpperPart>
-                <Button type={'checkbox'} onChange={() => console.log('Active')} ref={ref} />
-                <MenuLabel onClick={imageClick}>
-                    <MenuLabelImage />
-                </MenuLabel>
                 <NavBar />
             </MenuUpperPart>
-            <MenuContent isChecked={false}>{isChecked ? <MenuList /> : <MenuList />}</MenuContent>
+            <MenuContent isChecked={isChecked}>{isChecked ? <MenuList /> : <MenuList />}</MenuContent>
         </Menu>
     );
 };
