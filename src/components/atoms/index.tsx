@@ -1,4 +1,4 @@
 export * from './Nothing';
-export * from './HamburgerMenuIcon';
-export * from './Login';
+export * from './HamburgerMenuImage';
+
 export * from './MenuList';

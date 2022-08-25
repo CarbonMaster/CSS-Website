@@ -6,7 +6,7 @@ const Container = styled.label`
     z-index: 0;
 `;
 
-export const HamburgerMenuIcon = () => {
+export const HamburgerMenuImage = () => {
     return (
         <Container>
             <span></span>

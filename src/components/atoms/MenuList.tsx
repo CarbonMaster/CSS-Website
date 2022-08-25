@@ -7,15 +7,10 @@ const MenuOption = styled.li`
 `;
 
 const List = styled.ul`
-    list-style-type: none;
-    height: 50vh;
-    list-style-type: none;
-    padding: 0;
     overflow: hidden;
     .a {
         display: block;
         padding: 10px;
-        text-decoration: none;
     }
 `;
 
