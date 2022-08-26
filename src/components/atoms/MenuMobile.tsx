@@ -96,7 +96,7 @@ export const MenuMobile = () => {
         position: fixed;
         top: 15%;
         right: 5%;
-        transform: translate(0, 5%);
+        //transform: translate(0, 5vh);
 
         @keyframes hideMenu {
             0% {
@@ -119,7 +119,7 @@ export const MenuMobile = () => {
             max-width: 100%;
             max-height: 100%;
             visibility: visible;
-            transform: translate(0, 5%);
+            //transform: translate(0, 5vh);
 
             animation: showMenu 0.2s ease-in-out;
             visibility: visible;
