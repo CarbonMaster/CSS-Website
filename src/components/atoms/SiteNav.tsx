@@ -83,6 +83,7 @@ const MenuList = styled.div`
     background-color: rgba(0, 96, 113, 0.753);
     border-radius: 30px;
     width: 30vw;
+    overflow: hidden;
 `;
 
 const MenuOption = styled.div`
