@@ -28,12 +28,28 @@ const InputsContainer = styled.div`
     flex-direction: column;
 `;
 
-const SubmitButton = styled.button``;
+const SubmitButton = styled.button`
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: rgb(1, 255, 247);
+    box-shadow: 0px 0px 2px 2px #cfcf75;
+
+    ::hover {
+        transform: all 2s;
+        box-shadow: 0px 0px 2px 2px black;
+    }
+`;
 
 const DataVerify = Yup.object().shape({
     email: Yup.string().email().required(),
     password: Yup.string().required(),
 });
+
+const InputField = styled(Field)`
+    padding: 5px;
+    margin: 5px;
+`;
 
 export const LoginPopup = () => {
     return (
@@ -45,15 +61,14 @@ export const LoginPopup = () => {
                     password: '',
                 }}
                 onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 500));
-                    alert(JSON.stringify(values, null, 2));
+                    console.log(values);
                 }}
                 validationSchema={DataVerify}
             >
                 <Form>
                     <InputsContainer>
-                        <Field id="email" name="email" placeholder="E-mail" type="email" />
-                        <Field id="password" name="password" placeholder="Password" type="password" />
+                        <InputField id="email" name="email" placeholder="E-mail" type="email" />
+                        <InputField id="password" name="password" placeholder="Password" type="password" />
                         <SubmitButton type="submit">Login</SubmitButton>
                     </InputsContainer>
                 </Form>
