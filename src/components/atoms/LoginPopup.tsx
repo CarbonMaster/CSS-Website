@@ -49,6 +49,7 @@ const DataVerify = Yup.object().shape({
 const InputField = styled(Field)`
     padding: 5px;
     margin: 5px;
+    border-radius: 5px;
 `;
 
 export const LoginPopup = () => {
