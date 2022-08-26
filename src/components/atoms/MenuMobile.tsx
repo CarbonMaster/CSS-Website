@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 import { MenuList, LoginButton } from '..';
 
-const Menu = styled.ul`
+const Menu = styled.div`
     //background-color: rgba(156, 168, 212, 0.2);
     padding: 30px;
     //box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
@@ -16,19 +16,23 @@ const Menu = styled.ul`
     }
 `;
 
+const LoginMenu = styled.div`
+    //background-color: rgba(156, 168, 212, 0.2);
+    //padding: 30px;
+    //box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    //height: 100%;
+    z-index: 1;
+
+    //display: inline-block;
+
+    @media (min-width: 1000px) {
+        display: none;
+    }
+`;
+
 const Button = styled.input`
-    //width: 8vw;
-    //font-size: 3vh;
-    text-align: center;
-    //border-width: 0vh;
-    background-color: #888888;
-    //margin: 2em;
-    //border-radius: 1rem;
-    transition: all 0.1s;
-    color: rgb(0, 0, 0);
-    position: absolute;
-    right: 2%;
-    top: 0%;
     display: none;
 `;
 
@@ -48,6 +52,7 @@ const MenuLabel = styled.label`
     position: absolute;
     top: 30%;
     right: 5%;
+    z-index: 1;
 `;
 
 const MenuLabelImage = styled.svg`
@@ -58,18 +63,26 @@ const MenuLabelImage = styled.svg`
 `;
 
 export const MenuMobile = () => {
-    const ref = useRef<HTMLInputElement>(null);
-    const [isChecked, setIsChecked] = useState(false);
-    const image = useRef(null);
+    const menu = useRef<HTMLInputElement>(null);
+    const login = useRef<HTMLInputElement>(null);
+    const [isMenuChecked, setIsMenuChecked] = useState(false);
+    const [isLoginChecked, setIsLoginChecked] = useState(false);
 
-    const imageClick = () => {
-        const checkbox = ref.current;
+    const imageMenuClick = () => {
+        const checkbox = menu.current;
         console.log(checkbox);
         //checkbox?.click();
-        setIsChecked((prev) => !prev);
+        setIsMenuChecked((prev) => !prev);
     };
 
-    const MenuContent = styled.div<{ isChecked: boolean }>`
+    const imageLoginClick = () => {
+        const checkbox = login.current;
+        console.log(checkbox);
+        //checkbox?.click();
+        setIsLoginChecked((prev) => !prev);
+    };
+
+    const MenuContent = styled.div`
         //padding: 0 0 0 50px;
         //max-height: 0;
         z-index: 2;
@@ -83,43 +96,43 @@ export const MenuMobile = () => {
         position: fixed;
         top: 15%;
         right: 5%;
-        transform: translate(50%, 0);
+        transform: translate(0, 5%);
 
         @keyframes hideMenu {
             0% {
                 max-width: 100%;
                 max-height: 100%;
                 visibility: visible;
-                transform: translate(0, 0);
+                //transform: translate(-50%, 0);
             }
 
             100% {
                 max-width: 0%;
                 max-height: 0%;
                 visibility: hidden;
-                transform: translate(50%, 0);
+                //transform: translate(0, 0);
             }
         }
 
         &.enabledMenu {
-            transition: all 1s;
+            //transition: all 1s;
             max-width: 100%;
             max-height: 100%;
             visibility: visible;
-            transform: translate(0, 0);
+            transform: translate(0, 5%);
 
             animation: showMenu 0.2s ease-in-out;
             visibility: visible;
 
             @keyframes showMenu {
                 0% {
-                    transform: translate(50%, 0);
+                    //transform: translate(0, 0);
                     max-width: 0%;
                     max-height: 0%;
                 }
 
                 100% {
-                    transform: translate(0, 0);
+                    //transform: translate(-50%, 0);
                     max-width: 100%;
                     max-height: 100%;
                 }
@@ -128,15 +141,20 @@ export const MenuMobile = () => {
     `;
 
     return (
-        <Menu>
-            <Button type={'checkbox'} onChange={() => console.log('Active')} ref={ref} />
-            <MenuLabel onClick={imageClick}>
-                <MenuLabelImage />
-            </MenuLabel>
-            <LoginButton />
-            <MenuContent className={isChecked ? 'enabledMenu' : ''} isChecked={isChecked}>
-                <MenuList />
-            </MenuContent>
-        </Menu>
+        <>
+            <Menu>
+                <Button type={'checkbox'} onChange={() => console.log('Active')} ref={menu} />
+                <MenuLabel onClick={imageMenuClick}>
+                    <MenuLabelImage />
+                </MenuLabel>
+
+                <MenuContent className={isMenuChecked ? 'enabledMenu' : ''}>
+                    <MenuList />
+                </MenuContent>
+            </Menu>
+            <LoginMenu>
+                <LoginButton />
+            </LoginMenu>
+        </>
     );
 };

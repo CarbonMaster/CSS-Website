@@ -11,10 +11,10 @@ interface WrapperProps {
 }
 
 const WrapperItself = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: clip;
+    //display: flex;
+    //flex-direction: column;
+    //position: relative;
+    //overflow: clip;
 `;
 
 export const Wrapper: React.FC<WrapperProps> = ({ children }) => {
