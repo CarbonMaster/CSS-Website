@@ -237,6 +237,8 @@ const Bitch = styled.div`
     left: 50%;
     bottom: 50%;
     transform: translate(-50%, -50%);
+    font-size: 2em;
+    text-shadow: 0px 0px 10px rgba(52, 52, 52, 0.8);
     color: white;
 `;
 
@@ -248,7 +250,7 @@ export const MainSection: React.FC = () => {
                     <Title>Lorem ipsum</Title>
                     <SubTitle>dolor</SubTitle>
                     <KononButton>Click</KononButton>
-                    <Bitch>lololool</Bitch>
+                    <Bitch>Mini text</Bitch>
                 </TitleConstainer>
                 <ImageContainer>
                     <XImage />

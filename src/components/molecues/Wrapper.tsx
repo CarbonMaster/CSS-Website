@@ -1,4 +1,4 @@
-import { MenuDesktop, MenuMobile } from '../../components';
+import { MenuDesktop, MenuMobile, SiteNav } from '../../components';
 import styled from '@emotion/styled';
 
 const Children = styled.div`
@@ -10,20 +10,10 @@ interface WrapperProps {
     children: React.ReactNode;
 }
 
-const WrapperItself = styled.div`
-    //display: flex;
-    //flex-direction: column;
-    //position: relative;
-    //overflow: clip;
-`;
-
 export const Wrapper: React.FC<WrapperProps> = ({ children }) => {
     return (
         <>
-            <WrapperItself>
-                <MenuDesktop />
-                <MenuMobile />
-            </WrapperItself>
+            <SiteNav />
             <Children>{children}</Children>
         </>
     );

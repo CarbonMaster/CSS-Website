@@ -2,18 +2,28 @@ import styled from '@emotion/styled';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 
-const Container = styled.div`
+const Background = styled.div`
+    background: rgb(0, 107, 107);
+    position: flex;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 20px;
     font-size: 3em;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
-    //position: fixed;
+    position: fixed;
     position: absolute;
     justify-self: center;
     align-self: center;
     background: rgb(4, 191, 191);
-    //z-index: 4;
+    z-index: 4;
 `;
 
 const LoginTitle = styled.div`
@@ -55,26 +65,28 @@ const InputField = styled(Field)`
 
 export const LoginPopup = () => {
     return (
-        <Container>
-            <LoginTitle>Log in</LoginTitle>
-            <Formik
-                initialValues={{
-                    email: '',
-                    password: '',
-                }}
-                onSubmit={async (values) => {
-                    console.log(values);
-                }}
-                validationSchema={DataVerify}
-            >
-                <Form>
-                    <InputsContainer>
-                        <InputField id="email" name="email" placeholder="E-mail" type="email" />
-                        <InputField id="password" name="password" placeholder="Password" type="password" />
-                        <SubmitButton type="submit">Login</SubmitButton>
-                    </InputsContainer>
-                </Form>
-            </Formik>
-        </Container>
+        <Background>
+            <LoginContainer>
+                <LoginTitle>Log in</LoginTitle>
+                <Formik
+                    initialValues={{
+                        email: '',
+                        password: '',
+                    }}
+                    onSubmit={async (values) => {
+                        console.log(values);
+                    }}
+                    validationSchema={DataVerify}
+                >
+                    <Form>
+                        <InputsContainer>
+                            <InputField id="email" name="email" placeholder="E-mail" type="email" />
+                            <InputField id="password" name="password" placeholder="Password" type="password" />
+                            <SubmitButton type="submit">Login</SubmitButton>
+                        </InputsContainer>
+                    </Form>
+                </Formik>
+            </LoginContainer>
+        </Background>
     );
 };
