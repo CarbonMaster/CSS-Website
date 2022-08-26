@@ -1,24 +1,17 @@
 import styled from '@emotion/styled';
 
-const All = styled.div``;
-
 const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-
     background: linear-gradient(to right bottom, rgba(4, 102, 140, 0.8), rgba(2, 136, 209, 0.8)),
         url(./img/virus.jpg) no-repeat;
-
-    //background-size: 100%;
-
     background-position: top;
-
     clip-path: polygon(0 0, 100% 0, 90% 90%, 20% 100%, 0 100%);
 `;
 
-const TitleConstainer = styled.div`
+const TitleContainer = styled.div`
     position: absolute;
     justify-content: center;
     flex-wrap: wrap;
@@ -177,7 +170,7 @@ const XImage = styled.img`
     }
 `;
 
-const KononButton = styled.button`
+const CustomButton = styled.button`
     width: 8vw;
     font-size: 3vh;
     text-align: center;
@@ -200,39 +193,11 @@ const KononButton = styled.button`
     :active {
         background-color: #333333;
         transform: translate(0, 0em);
-        transition: all 0.2s;
-    }
-
-    :visited {
-        background-color: #0033ff !important;
-        transition: all 0.2s;
-    }
-
-    :link {
-        transition: all 0.2s;
-    }
-
-    ::after {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        border-radius: 1rem;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-    }
-
-    :hover::after {
-        transform: scale(2);
-        z-index: 2;
-        color: white;
-        transition: all 0.2s;
+        transition: all 0.1s;
     }
 `;
 
-const Bitch = styled.div`
+const SubText = styled.div`
     position: relative;
     left: 50%;
     bottom: 50%;
@@ -244,18 +209,18 @@ const Bitch = styled.div`
 
 export const MainSection: React.FC = () => {
     return (
-        <All>
+        <>
             <Container>
-                <TitleConstainer>
+                <TitleContainer>
                     <Title>Lorem ipsum</Title>
                     <SubTitle>dolor</SubTitle>
-                    <KononButton>Click</KononButton>
-                    <Bitch>Mini text</Bitch>
-                </TitleConstainer>
+                    <CustomButton>Click</CustomButton>
+                    <SubText>Mini text</SubText>
+                </TitleContainer>
                 <ImageContainer>
                     <XImage />
                 </ImageContainer>
             </Container>
-        </All>
+        </>
     );
 };
