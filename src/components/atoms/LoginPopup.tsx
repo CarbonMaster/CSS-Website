@@ -9,18 +9,19 @@ const Container = styled.div`
     font-size: 3em;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
     //position: fixed;
-    //position: absolute;
+    position: absolute;
     justify-self: center;
     align-self: center;
-    background: rgb(203, 153, 153);
+    background: rgb(4, 191, 191);
     //z-index: 4;
 `;
 
 const LoginTitle = styled.div`
-    font-size: 1em;
+    font-size: 3rem;
     font-weight: bold;
     padding-bottom: 15px;
     align-self: center;
+    text-shadow: 0px 0px 3px rgba(0, 48, 90, 0.8);
 `;
 
 const InputsContainer = styled.div`
@@ -33,11 +34,11 @@ const SubmitButton = styled.button`
     padding: 5px;
     border-radius: 5px;
     border-color: rgb(1, 255, 247);
-    box-shadow: 0px 0px 2px 2px #cfcf75;
+    box-shadow: 0px 0px 2px 2px rgb(173, 213, 247);
 
     ::hover {
         transform: all 2s;
-        box-shadow: 0px 0px 2px 2px black;
+        box-shadow: 0px 0px 2px 2px rgb(0, 48, 90);
     }
 `;
 
@@ -55,7 +56,7 @@ const InputField = styled(Field)`
 export const LoginPopup = () => {
     return (
         <Container>
-            <LoginTitle>Login</LoginTitle>
+            <LoginTitle>Log in</LoginTitle>
             <Formik
                 initialValues={{
                     email: '',

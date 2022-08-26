@@ -39,7 +39,7 @@ const Button = styled.input`
 const MenuLabel = styled.label`
     display: block;
     cursor: pointer;
-    background: linear-gradient(to right bottom, rgba(85, 0, 255, 0.8), rgba(255, 255, 255, 0.8));
+    background: linear-gradient(to right bottom, rgba(14, 234, 255, 0.8), rgba(89, 216, 230, 0.8));
     //background-size: 100% 100%;
     align-items: center;
     justify-content: center;
@@ -53,6 +53,18 @@ const MenuLabel = styled.label`
     top: 30%;
     right: 5%;
     z-index: 1;
+
+    :hover {
+        box-shadow: 0 10px 20px rgba(1, 1, 1, 0.5);
+        transform: translate(0, -0.1em);
+        transition: all 0.2s;
+    }
+
+    :active {
+        box-shadow: 0 5px 3px rgba(26, 26, 26, 0.5);
+        transform: translate(0, 0.1em);
+        transition: all 0.1s;
+    }
 `;
 
 const MenuLabelImage = styled.svg`
@@ -115,24 +127,20 @@ export const MenuMobile = () => {
         }
 
         &.enabledMenu {
-            //transition: all 1s;
             max-width: 100%;
             max-height: 100%;
             visibility: visible;
-            //transform: translate(0, 5vh);
 
             animation: showMenu 0.2s ease-in-out;
             visibility: visible;
 
             @keyframes showMenu {
                 0% {
-                    //transform: translate(0, 0);
                     max-width: 0%;
                     max-height: 0%;
                 }
 
                 100% {
-                    //transform: translate(-50%, 0);
                     max-width: 100%;
                     max-height: 100%;
                 }
@@ -143,7 +151,7 @@ export const MenuMobile = () => {
     return (
         <>
             <Menu>
-                <Button type={'checkbox'} onChange={() => console.log('Active')} ref={menu} />
+                <Button type={'checkbox'} onChange={() => console.log('Active')} />
                 <MenuLabel onClick={imageMenuClick}>
                     <MenuLabelImage />
                 </MenuLabel>

@@ -3,8 +3,8 @@ import React, { useRef, useState } from 'react';
 import { MenuList, HamburgerMenuImage, NavBar } from '..';
 
 const Menu = styled.ul`
-    background-color: rgba(156, 168, 212, 0.2);
-    padding: 30px;
+    background-color: rgba(89, 216, 230, 0.2);
+    //padding: 30px;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
     //display: inline-block;
     //position: fixed;

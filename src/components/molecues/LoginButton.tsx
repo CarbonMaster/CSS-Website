@@ -14,7 +14,7 @@ const Button = styled.input`
 
 const LoginLabel = styled.div`
     cursor: pointer;
-    background: linear-gradient(to right bottom, rgba(85, 0, 255, 0.8), rgba(255, 255, 255, 0.8));
+    background: linear-gradient(to right bottom, rgba(89, 216, 230, 0.8), rgba(14, 234, 255, 0.8));
     background-size: 100% 100%;
     background-color: black;
     padding: 10px;
@@ -26,12 +26,24 @@ const LoginLabel = styled.div`
     position: fixed;
     top: 4%;
     left: 5%;
+
+    :hover {
+        box-shadow: 0 10px 20px rgba(1, 1, 1, 0.5);
+        transform: translate(0, -0.1em);
+        transition: all 0.2s;
+    }
+
+    :active {
+        box-shadow: 0 5px 3px rgba(26, 26, 26, 0.5);
+        transform: translate(0, 0em);
+        transition: all 0.1s;
+    }
 `;
 
 const LogInContent = styled.div`
     z-index: 2;
     background-color: #aeaeae;
-    background: linear-gradient(to right bottom, rgba(22, 176, 128, 0.8), rgba(144, 65, 65, 0.8));
+    background: linear-gradient(to bottom, rgba(41, 98, 255, 0.8), rgba(53, 71, 140, 0.8));
     width: 100vw;
     height: 105vh;
     animation: hideLogin 0.3s ease-in-out;

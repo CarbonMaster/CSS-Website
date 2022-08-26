@@ -8,14 +8,14 @@ const Container = styled.div`
     align-items: center;
     height: 100vh;
 
-    background: linear-gradient(to right bottom, rgba(4, 102, 140, 0.8), rgba(2, 136, 209, 0.8)),
+    background: linear-gradient(to bottom, rgb(2, 8, 115), rgba(21, 16, 240, 0.8), rgba(44, 29, 255, 0.8)),
         url(./img/virus.jpg) no-repeat;
 
     //background-size: 100%;
 
     background-position: top;
 
-    clip-path: polygon(0 0, 100% 0, 90% 90%, 20% 100%, 0 100%);
+    clip-path: polygon(0% 0, 20% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%);
 `;
 
 const TitleConstainer = styled.div`
@@ -33,7 +33,7 @@ const Title = styled.div`
     width: 50vw;
     text-transform: uppercase;
     letter-spacing: 1ch;
-    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
 
     animation: moveinleft 1.5s ease-in-out, 0.5s zoomin 1.5s ease-in-out;
     backface-visibility: hidden;
@@ -74,7 +74,6 @@ const SubTitle = styled(Title)`
     font-size: 4vh;
     text-transform: capitalize;
     animation: moveinright 1s ease-in-out;
-    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
 
     @keyframes moveinright {
         0% {
@@ -98,35 +97,11 @@ const XImage = styled.img`
     height: 10vh;
     backface-visibility: hidden;
     content: url(./svg/x.svg);
-    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
-    border-radius: 100px;
 
-    animation: spinner 0.4s infinite ease-in-out;
+    animation: circle 1s ease-in-out;
 
     :hover {
         animation: hoveranimation 1s infinite ease-in-out;
-    }
-
-    @keyframes spinner {
-        0% {
-            box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
-        }
-
-        25% {
-            box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.5);
-        }
-
-        50% {
-            box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
-        }
-
-        75% {
-            box-shadow: 2px 0px 5px rgba(255, 255, 255, 0.5);
-        }
-
-        100% {
-            box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
-        }
     }
 
     @keyframes circle {
@@ -240,7 +215,7 @@ const Bitch = styled.div`
     color: white;
 `;
 
-export const MainSection: React.FC = () => {
+export const SecondSection: React.FC = () => {
     return (
         <All>
             <Container>
@@ -250,9 +225,6 @@ export const MainSection: React.FC = () => {
                     <KononButton>Click</KononButton>
                     <Bitch>lololool</Bitch>
                 </TitleConstainer>
-                <ImageContainer>
-                    <XImage />
-                </ImageContainer>
             </Container>
         </All>
     );
