@@ -12,6 +12,7 @@ const MenuOption = styled.li`
     border-radius: 10px;
     align-content: center;
     justify-content: center;
+    cursor: pointer;
     :hover {
         background-color: rgb(0, 146, 178);
         //transform: translate(0, -0.1em);
@@ -29,7 +30,7 @@ const MenuOption = styled.li`
 `;
 
 const LoginMenuOption = styled(MenuOption)`
-    cursor: pointer;
+    z-index: 4;
 `;
 
 const List = styled.ul`
@@ -99,12 +100,10 @@ export const NavBar = () => {
     };
     return (
         <List>
-            <LoginMenuOption onClick={imageClick}>
-                Login
-                <LogInContent className={DesktopLoginVisible ? 'EnabledLogin' : ''}>
-                    <LoginPopup />
-                </LogInContent>
-            </LoginMenuOption>
+            <LoginMenuOption onClick={imageClick}>Login</LoginMenuOption>
+            <LogInContent className={DesktopLoginVisible ? 'EnabledLogin' : ''}>
+                <LoginPopup />
+            </LogInContent>
             <MenuOption>Lorum</MenuOption>
             <MenuOption>Lorum</MenuOption>
         </List>
