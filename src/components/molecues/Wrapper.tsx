@@ -14,6 +14,7 @@ export const Wrapper: React.FC<WrapperProps> = ({ children }) => {
     return (
         <>
             <SiteNav />
+            
             <Children>{children}</Children>
         </>
     );

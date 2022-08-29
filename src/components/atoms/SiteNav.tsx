@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
+import { useOutsideClick } from 'rooks';
+//import { useOnClickOutside } from '@/src/hooks';
 
 const Container = styled.div`
     display: fixed;
@@ -12,7 +15,7 @@ const Container = styled.div`
     align-items: center;
     height: 10vh;
     padding: 10px;
-    background-color: #40a6ff7f;
+    background-color: #4f1ea17f;
     width: 100%;
 `;
 
@@ -35,7 +38,7 @@ const HamburgerImage = styled.div`
     border-radius: 100px;
     z-index: 2;
     content: url(./svg/hamburger.svg);
-    background-color: rgba(0, 87, 102, 0.846);
+    background-color: #cebcecc9;
     padding: 5px;
 `;
 
@@ -48,13 +51,10 @@ const MenuContainer = styled.div`
     position: fixed;
     display: flex;
     opacity: 0;
-    background-color: #40a6ff7f;
     top: 0;
     right: 0;
     z-index: 0;
-    width: 100%;
-    height: 100%;
-    margin: 10vh 0px;
+    margin: 10vh 3vw;
 
     animation: showMenu 0.2s ease;
 
@@ -78,12 +78,14 @@ const MenuList = styled.div`
     justify-self: flex-end;
     align-items: flex-end;
     align-self: flex-end;
-    padding: 5vw;
-    margin: 5%;
-    background-color: rgba(0, 96, 113, 0.753);
+
+    background-color: #4e1ea1e5;
     border-radius: 30px;
-    width: 30vw;
     overflow: hidden;
+
+    @media (min-width: 1000px) {
+        padding: 50px;
+    }
 `;
 
 const MenuOption = styled.div`
@@ -98,11 +100,16 @@ const MenuOption = styled.div`
     font-weight: 600;
     text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
     cursor: pointer;
-    background-color: rgba(0, 47, 55, 0.753);
+    background-color: #8032fdb7;
+
+    @media (max-width: 1000px) {
+        border-radius: 5px;
+        width: 100%;
+    }
 `;
 
 const LoginWholeContainer = styled.div`
-    background: rgba(0, 107, 107, 0.7);
+    background: #2f135be0;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -127,16 +134,30 @@ const LoginWholeContainer = styled.div`
     }
 `;
 
-const LoginExitButtonContainer = styled.div`
+const RegisterWholeContainer = styled(LoginWholeContainer)`
+    background: #2e135be0;
+`;
+
+const ExitButtonContainer = styled.div`
     cursor: pointer;
     content: url(./svg/x.svg);
     border-radius: 100px;
     width: 10%;
     align-self: flex-end;
     z-index: 2;
-    box-shadow: 0px 0px 0px 3px black;
+    box-shadow: 0px 0px 0px 1px black;
     //margin: 1em;
-    background-color: rgba(0, 87, 102, 0.846);
+    background-color: #8032fd82;
+`;
+
+const MenuExitButtonContainer = styled(ExitButtonContainer)`
+    transform: translate(50%, -50%);
+    scale: 200%;
+    background-color: #cebcecc9;
+
+    @media (max-width: 800px) {
+        display: none;
+    }
 `;
 
 const LoginContainer = styled.div`
@@ -144,12 +165,17 @@ const LoginContainer = styled.div`
     flex-direction: column;
     padding: 20px;
     font-size: 3em;
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 30px #f2f3f638;
     position: fixed;
     justify-self: center;
     align-self: center;
-    background: rgb(4, 191, 191);
+    background: #b991f8;
     z-index: 4;
+`;
+
+const RegisterContainer = styled(LoginContainer)`
+    padding: 40px;
+    border-radius: 20px;
 `;
 
 const LoginTitle = styled.div`
@@ -178,8 +204,14 @@ const SubmitButton = styled.button`
     }
 `;
 
-const DataVerify = Yup.object().shape({
+const LoginDataVerify = Yup.object().shape({
     email: Yup.string().email().required(),
+    password: Yup.string().required(),
+});
+
+const RegisterDataVerify = Yup.object().shape({
+    email: Yup.string().email().required(),
+    name: Yup.string().required(),
     password: Yup.string().required(),
 });
 
@@ -192,6 +224,7 @@ const InputField = styled(Field)`
 export const SiteNav: React.FC = () => {
     const [menuOpen, setMenuVisible] = useState(false);
     const [loginOpen, setLoginVisible] = useState(false);
+    const [registerOpen, setRegisterVisible] = useState(false);
 
     return (
         <>
@@ -203,14 +236,16 @@ export const SiteNav: React.FC = () => {
             </Container>
             <MenuContainer className={menuOpen ? 'visible' : ''}>
                 <MenuList>
+                    <MenuExitButtonContainer onClick={() => setMenuVisible((prev) => !prev)} />
                     <MenuOption>Section</MenuOption>
                     <MenuOption>Section</MenuOption>
                     <MenuOption onClick={() => setLoginVisible((prev) => !prev)}>Login</MenuOption>
+                    <MenuOption onClick={() => setRegisterVisible((prev) => !prev)}>Register</MenuOption>
                 </MenuList>
             </MenuContainer>
             <LoginWholeContainer className={loginOpen ? 'visible' : ''}>
                 <LoginContainer>
-                    <LoginExitButtonContainer onClick={() => setLoginVisible((prev) => !prev)} />
+                    <ExitButtonContainer onClick={() => setLoginVisible((prev) => !prev)} />
                     <LoginTitle>Log in</LoginTitle>
                     <Formik
                         initialValues={{
@@ -220,7 +255,7 @@ export const SiteNav: React.FC = () => {
                         onSubmit={async (values) => {
                             console.log(values);
                         }}
-                        validationSchema={DataVerify}
+                        validationSchema={LoginDataVerify}
                     >
                         <Form>
                             <InputsContainers>
@@ -230,8 +265,35 @@ export const SiteNav: React.FC = () => {
                             </InputsContainers>
                         </Form>
                     </Formik>
+                    <SubmitButton onClick={() => setRegisterVisible((prev) => !prev)}>Register</SubmitButton>
                 </LoginContainer>
             </LoginWholeContainer>
+            <RegisterWholeContainer className={registerOpen ? 'visible' : ''}>
+                <RegisterContainer>
+                    <ExitButtonContainer onClick={() => setRegisterVisible((prev) => !prev)} />
+                    <LoginTitle>Register</LoginTitle>
+                    <Formik
+                        initialValues={{
+                            email: '',
+                            name: '',
+                            password: '',
+                        }}
+                        onSubmit={async (values) => {
+                            console.log(values);
+                        }}
+                        validationSchema={RegisterDataVerify}
+                    >
+                        <Form>
+                            <InputsContainers>
+                                <InputField id="email" name="email" placeholder="E-mail" type="email" />
+                                <InputField id="name" name="name" placeholder="Name" type="name" />
+                                <InputField id="password" name="password" placeholder="Password" type="password" />
+                                <SubmitButton type="submit">Register</SubmitButton>
+                            </InputsContainers>
+                        </Form>
+                    </Formik>
+                </RegisterContainer>
+            </RegisterWholeContainer>
         </>
     );
 };

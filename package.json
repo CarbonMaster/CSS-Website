@@ -19,8 +19,10 @@
         "next": "^12.2.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-onclickoutside": "^6.12.2",
         "remark": "^14.0.2",
         "remark-html": "^15.0.1",
+        "rooks": "^6.4.3",
         "yup": "^0.32.11"
     },
     "devDependencies": {
