@@ -110,6 +110,7 @@ const MenuOption = styled.div`
     @media (max-width: 1000px) {
         border-radius: 5px;
         width: 100%;
+        font-size: 3em;
     }
 `;
 
