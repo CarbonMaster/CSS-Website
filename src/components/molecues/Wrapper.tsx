@@ -1,4 +1,4 @@
-import { MenuDesktop, MenuMobile, SiteNav } from '../../components';
+import { SiteNav } from '../../components';
 import styled from '@emotion/styled';
 
 const Children = styled.div`
@@ -14,7 +14,7 @@ export const Wrapper: React.FC<WrapperProps> = ({ children }) => {
     return (
         <>
             <SiteNav />
-            
+
             <Children>{children}</Children>
         </>
     );

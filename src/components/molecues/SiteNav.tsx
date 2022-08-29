@@ -84,7 +84,6 @@ const MenuList = styled.div`
 
     background-color: #4e1ea1e5;
     overflow: hidden;
-    //padding-right: 50px;
 
     @media (min-width: 1000px) {
         padding: 50px 50px 10px 50px;
@@ -151,7 +150,6 @@ const ExitButtonContainer = styled.div`
     align-self: flex-end;
     z-index: 2;
     box-shadow: 0px 0px 0px 1px black;
-    //margin: 1em;
     background-color: #8032fd82;
 `;
 
