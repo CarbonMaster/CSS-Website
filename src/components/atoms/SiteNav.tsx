@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { useOutsideClick } from 'rooks';
-//import { useOnClickOutside } from '@/src/hooks';
+import { useOnClickOutside } from '@/src/hooks';
 
 const Container = styled.div`
     display: fixed;
@@ -54,19 +54,23 @@ const MenuContainer = styled.div`
     top: 0;
     right: 0;
     z-index: 0;
-    margin: 10vh 3vw;
+    margin: 10vh 0vw;
+    transform: translate(100%, 0);
 
     animation: showMenu 0.2s ease;
 
     @keyframes showMenu {
         0% {
             opacity: 0;
+            transform: translate(100%, 0);
         }
         100% {
             opacity: 1;
+            transform: translate(0, 0);
         }
     }
     &.visible {
+        transform: translate(0, 0);
         z-index: 1;
         opacity: 1;
     }
@@ -80,11 +84,12 @@ const MenuList = styled.div`
     align-self: flex-end;
 
     background-color: #4e1ea1e5;
-    border-radius: 30px;
     overflow: hidden;
+    //padding-right: 50px;
 
     @media (min-width: 1000px) {
-        padding: 50px;
+        padding: 50px 50px 10px 50px;
+        width: 150px;
     }
 `;
 
@@ -142,7 +147,7 @@ const ExitButtonContainer = styled.div`
     cursor: pointer;
     content: url(./svg/x.svg);
     border-radius: 100px;
-    width: 10%;
+    width: 20px;
     align-self: flex-end;
     z-index: 2;
     box-shadow: 0px 0px 0px 1px black;
@@ -225,6 +230,29 @@ export const SiteNav: React.FC = () => {
     const [menuOpen, setMenuVisible] = useState(false);
     const [loginOpen, setLoginVisible] = useState(false);
     const [registerOpen, setRegisterVisible] = useState(false);
+    const menu = useRef(null);
+    const login = useRef(null);
+    const register = useRef(null);
+
+    const closemenu = () => {
+        {
+            menuOpen ? setMenuVisible((prev) => !prev) : '';
+        }
+        console.log('clicked outside');
+    };
+    useOnClickOutside(menu, closemenu);
+
+    const closelogin = () => {
+        setLoginVisible((prev) => false);
+        console.log('clicked outside');
+    };
+    useOnClickOutside(login, closelogin);
+
+    const closeregister = () => {
+        setRegisterVisible((prev) => false);
+        console.log('clicked outside');
+    };
+    useOnClickOutside(register, closeregister);
 
     return (
         <>
@@ -235,16 +263,42 @@ export const SiteNav: React.FC = () => {
                 </HamburgerMenu>
             </Container>
             <MenuContainer className={menuOpen ? 'visible' : ''}>
-                <MenuList>
+                <MenuList ref={menu}>
                     <MenuExitButtonContainer onClick={() => setMenuVisible((prev) => !prev)} />
-                    <MenuOption>Section</MenuOption>
-                    <MenuOption>Section</MenuOption>
-                    <MenuOption onClick={() => setLoginVisible((prev) => !prev)}>Login</MenuOption>
-                    <MenuOption onClick={() => setRegisterVisible((prev) => !prev)}>Register</MenuOption>
+                    <MenuOption
+                        onClick={() => {
+                            closemenu();
+                        }}
+                    >
+                        Section
+                    </MenuOption>
+                    <MenuOption
+                        onClick={() => {
+                            closemenu();
+                        }}
+                    >
+                        Section
+                    </MenuOption>
+                    <MenuOption
+                        onClick={() => {
+                            setLoginVisible((prev) => !prev);
+                            closemenu();
+                        }}
+                    >
+                        Login
+                    </MenuOption>
+                    <MenuOption
+                        onClick={() => {
+                            setRegisterVisible((prev) => !prev);
+                            closemenu();
+                        }}
+                    >
+                        Register
+                    </MenuOption>
                 </MenuList>
             </MenuContainer>
             <LoginWholeContainer className={loginOpen ? 'visible' : ''}>
-                <LoginContainer>
+                <LoginContainer ref={login}>
                     <ExitButtonContainer onClick={() => setLoginVisible((prev) => !prev)} />
                     <LoginTitle>Log in</LoginTitle>
                     <Formik
@@ -269,7 +323,7 @@ export const SiteNav: React.FC = () => {
                 </LoginContainer>
             </LoginWholeContainer>
             <RegisterWholeContainer className={registerOpen ? 'visible' : ''}>
-                <RegisterContainer>
+                <RegisterContainer ref={register}>
                     <ExitButtonContainer onClick={() => setRegisterVisible((prev) => !prev)} />
                     <LoginTitle>Register</LoginTitle>
                     <Formik
