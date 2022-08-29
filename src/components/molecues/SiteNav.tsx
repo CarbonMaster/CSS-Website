@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useRef } from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { useOutsideClick } from 'rooks';
 import { useOnClickOutside } from '@/src/hooks';
 
 const Container = styled.div`
@@ -320,7 +319,14 @@ export const SiteNav: React.FC = () => {
                             </InputsContainers>
                         </Form>
                     </Formik>
-                    <SubmitButton onClick={() => setRegisterVisible((prev) => !prev)}>Register</SubmitButton>
+                    <SubmitButton
+                        onClick={() => {
+                            setRegisterVisible((prev) => !prev);
+                            closelogin();
+                        }}
+                    >
+                        Register
+                    </SubmitButton>
                 </LoginContainer>
             </LoginWholeContainer>
             <RegisterWholeContainer className={registerOpen ? 'visible' : ''}>
