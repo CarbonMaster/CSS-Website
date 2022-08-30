@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { useOnClickOutside } from '@/src/hooks';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const links = [
     {
@@ -118,7 +118,7 @@ const MenuList = styled.div`
 
     @media (min-width: 1000px) {
         padding: 50px 50px 10px 50px;
-        width: 180px;
+        width: 15vw;
     }
 `;
 
@@ -127,7 +127,7 @@ const MenuOption = styled.div`
     margin: 0.5em;
     padding: 0.5em;
     border-radius: 10px;
-    width: 100px;
+    width: 300px;
     display: flex;
     justify-content: flex-end;
     font-size: 2em;
@@ -295,19 +295,21 @@ export const SiteNav: React.FC = () => {
                 <MenuList ref={menu}>
                     {/* zrobic w postaci mapy */}
                     <MenuExitButtonContainer onClick={() => setMenuVisible((prev) => !prev)} />
+
                     <MenuOption
                         onClick={() => {
                             closemenu();
                         }}
                     >
-                        Section
+                        Our Discord
                     </MenuOption>
+
                     <MenuOption
                         onClick={() => {
                             closemenu();
                         }}
                     >
-                        Section
+                        Games
                     </MenuOption>
                     <MenuOption
                         onClick={() => {
