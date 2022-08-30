@@ -35,7 +35,7 @@ const Logo = styled.div`
     content: url(./img/logo.png);
 
     @media (max-width: 600px) {
-        width: 40%;
+        width: 35%;
     }
 `;
 
@@ -44,9 +44,7 @@ const Link = styled.div``;
 export const FooterContent: React.FC = () => {
     return (
         <Container>
-            <FooterElement>
-                <Logo />
-            </FooterElement>
+            <Logo />
             <FooterElement>Studio:</FooterElement>
             <FooterElement>Games:</FooterElement>
             <FooterElement>Kontakt: 123456789</FooterElement>
