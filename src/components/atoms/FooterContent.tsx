@@ -6,11 +6,12 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     padding: 200px 0 200px 0;
 
     @media (max-width: 600px) {
         flex-direction: column;
-        padding: 0;
+        padding: 50px 0 50px 0;
     }
 `;
 
@@ -27,17 +28,25 @@ const FooterElement = styled.div`
     }
 `;
 
+const Logo = styled.div`
+    border-radius: 100px;
+    width: 100px;
+    content: url(./img/logo.png);
+
+    @media (max-width: 600px) {
+        width: 40%;
+    }
+`;
+
 const Link = styled.div``;
 
 export const FooterContent: React.FC = () => {
     return (
         <Container>
-            <FooterElement></FooterElement>
-            <FooterElement>image</FooterElement>
+            <Logo />
             <FooterElement>Studio:</FooterElement>
             <FooterElement>Games:</FooterElement>
             <FooterElement>Kontakt: 123456789</FooterElement>
-            <FooterElement></FooterElement>
         </Container>
     );
 };

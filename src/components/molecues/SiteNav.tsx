@@ -131,7 +131,7 @@ const LoginWholeContainer = styled.div`
     height: 100%;
     display: flex;
     justify-content: center;
-    z-index: 0;
+    z-index: -1;
     opacity: 0;
 
     animation: showLogin 0.2s ease;
