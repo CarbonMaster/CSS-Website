@@ -26,7 +26,7 @@ const Container = styled.div`
     align-items: center;
     height: 10vh;
     padding: 10px;
-    background-color: #4f1ea17f;
+    background-color: #4e1ea1e0;
     width: 100%;
 `;
 
@@ -85,15 +85,34 @@ const MenuContainer = styled.div`
         z-index: 1;
         opacity: 1;
     }
+
+    @media (max-width: 600px) {
+        margin: 10vh 0vw;
+        animation: showMenuMobile 0.2s ease;
+        transform: translate(0%, 0);
+        width: 100%;
+
+        @keyframes showMenuMobile {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        &.visible {
+            transform: translate(0, 0);
+            z-index: 1;
+            opacity: 1;
+        }
+    }
 `;
 
 const MenuList = styled.div`
     display: flex;
     flex-direction: column;
-    justify-self: flex-end;
     align-items: flex-end;
-    align-self: flex-end;
-
+    height: 90vh;
     background-color: #4e1ea1e5;
     overflow: hidden;
 
@@ -170,7 +189,7 @@ const MenuExitButtonContainer = styled(ExitButtonContainer)`
     scale: 200%;
     background-color: #cebcecc9;
 
-    @media (max-width: 800px) {
+    @media (max-width: 1000px) {
         display: none;
     }
 `;
