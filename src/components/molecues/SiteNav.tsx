@@ -118,7 +118,7 @@ const MenuList = styled.div`
 
     @media (min-width: 1000px) {
         padding: 50px 50px 10px 50px;
-        width: 150px;
+        width: 180px;
     }
 `;
 
