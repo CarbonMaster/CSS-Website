@@ -64,7 +64,7 @@ const MenuContainer = styled.div`
     opacity: 0;
     top: 0;
     right: 0;
-    z-index: 0;
+    z-index: -1;
     margin: 10vh 0vw;
     transform: translate(100%, 0);
 
@@ -265,21 +265,18 @@ export const SiteNav: React.FC = () => {
 
     const closemenu = () => {
         {
-            menuOpen ? setMenuVisible((prev) => !prev) : '';
+            menuOpen ? setMenuVisible((prev) => !prev) : null;
         }
-        console.log('clicked outside');
     };
     useOnClickOutside(menu, closemenu);
 
     const closelogin = () => {
         setLoginVisible((prev) => false);
-        console.log('clicked outside');
     };
     useOnClickOutside(login, closelogin);
 
     const closeregister = () => {
         setRegisterVisible((prev) => false);
-        console.log('clicked outside');
     };
     useOnClickOutside(register, closeregister);
 
@@ -294,8 +291,6 @@ export const SiteNav: React.FC = () => {
             <MenuContainer className={menuOpen ? 'visible' : ''}>
                 <MenuList ref={menu}>
                     {/* zrobic w postaci mapy */}
-                    <MenuExitButtonContainer onClick={() => setMenuVisible((prev) => !prev)} />
-
                     <MenuOption
                         onClick={() => {
                             closemenu();
