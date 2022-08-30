@@ -4,6 +4,18 @@ import { useRef } from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { useOnClickOutside } from '@/src/hooks';
+import Link from 'next/dist/client/link';
+
+const links = [
+    {
+        link: '/',
+        name: 'Main Page',
+    },
+    {
+        link: '/Games',
+        name: 'Games',
+    },
+];
 
 const Container = styled.div`
     display: fixed;
@@ -30,7 +42,7 @@ const Logo = styled.div`
     border-radius: 100px;
     height: 100%;
     z-index: 2;
-    content: url(./img/konon.png);
+    content: url(./img/logo.png);
 `;
 
 const HamburgerImage = styled.div`

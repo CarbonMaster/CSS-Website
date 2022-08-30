@@ -1,4 +1,4 @@
-import { SiteNav } from '../../components';
+import { SiteNav, Footer } from '../../components';
 import styled from '@emotion/styled';
 
 const Children = styled.div`
@@ -14,8 +14,8 @@ export const Wrapper: React.FC<WrapperProps> = ({ children }) => {
     return (
         <>
             <SiteNav />
-
             <Children>{children}</Children>
+            <Footer />
         </>
     );
 };
