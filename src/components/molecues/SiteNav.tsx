@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { useOnClickOutside } from '@/src/hooks';
-import Link from 'next/dist/client/link';
+import { Link } from 'react-router-dom';
 
 const links = [
     {
@@ -293,6 +293,7 @@ export const SiteNav: React.FC = () => {
             </Container>
             <MenuContainer className={menuOpen ? 'visible' : ''}>
                 <MenuList ref={menu}>
+                    {/* zrobic w postaci mapy */}
                     <MenuExitButtonContainer onClick={() => setMenuVisible((prev) => !prev)} />
                     <MenuOption
                         onClick={() => {
