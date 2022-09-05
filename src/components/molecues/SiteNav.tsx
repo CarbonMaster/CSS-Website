@@ -5,6 +5,7 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { useOnClickOutside } from '@/src/hooks';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { number } from 'yup/lib/locale';
 
 const links = [
     {
@@ -262,6 +263,19 @@ export const SiteNav: React.FC = () => {
     const menu = useRef(null);
     const login = useRef(null);
     const register = useRef(null);
+    let XD = 'lol';
+    console.log(XD);
+
+    const printer = (pr: string, number: number) => {
+        console.log(pr);
+        console.log(number);
+        return number * 2;
+    };
+
+    const bruh = (number: number) => number * 2;
+
+    console.log(printer('hono', 12));
+    console.log(bruh(2));
 
     const closemenu = () => {
         {
